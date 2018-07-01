@@ -37,6 +37,8 @@ import { REQUEST, RESPONSE } from '@nguniversal/express-engine/tokens';
 const PORT = process.env.PORT || 4000;
 import { ROUTES } from './static.paths';
 
+// declare var MeteorServer;
+
 enableProdMode();
 
 const app = express();
@@ -126,4 +128,31 @@ app.get('*', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`listening on http://localhost:${PORT}!`);
+});
+
+
+MeteorServer.connect((error, wasReconnect) => {
+  // If autoReconnect is true, this callback will be invoked each time
+  // a server connection is re-established
+  if (error) {
+    console.log('DDP connection error!');
+    return;
+  }
+
+  if (wasReconnect) {
+    console.log('Reestablishment of a connection.');
+  }
+
+  console.log('connected!');
+  // // Do Subscriptions here...
+  MeteorServer.subscribe('services', [], () => {
+    console.log('Services Ready...');
+  });
+  MeteorServer.subscribe('categories', [], () => {
+    console.log('Categories Ready...');
+  });
+
+  MeteorServer.subscribe('allForms', [], () => {
+    console.log('Forms Ready...');
+  });
 });

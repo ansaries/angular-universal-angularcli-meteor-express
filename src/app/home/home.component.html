@@ -1,2 +1,13 @@
 <h1>{{ "home.title" | translate }}</h1>
 <p>{{ "home.text" | translate }}</p>
+
+<div class="container">
+    <ul>
+      Services Come here...
+      <li *ngFor="let service of services|async">
+        <div class="name">
+          {{service?.name}}
+        </div>
+    </li>
+</ul>
+  </div>

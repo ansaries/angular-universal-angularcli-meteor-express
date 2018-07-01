@@ -11,12 +11,14 @@ import { TranslatesServerModule } from '@shared/translates/translates-server';
 // components
 import { AppComponent } from './app.component';
 import { AppModule } from './app.module';
+import { ServerDataServiceModule } from '@shared/data-service/server-data-service.module';
 
 @NgModule({
   imports: [
     AppModule,
     NoopAnimationsModule,
     ServerTransferStateModule,
+    ServerDataServiceModule,
     ServerModule,
     ModuleMapLoaderModule,
     TranslatesServerModule

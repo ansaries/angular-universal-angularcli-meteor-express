@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 import { AppModule } from './app.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { BrowserDataServiceModule } from '@shared/data-service/browser-data-service.module';
 
 // import { ServiceWorkerModule } from '@angular/service-worker';
 
@@ -27,6 +28,7 @@ export function getRequest(): any {
     BrowserModule.withServerTransition({ appId: 'my-app' }),
     TransferHttpCacheModule,
     BrowserTransferStateModule,
+    BrowserDataServiceModule,
     AppModule,
     TranslatesBrowserModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
